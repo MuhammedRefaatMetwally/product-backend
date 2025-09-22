@@ -2,22 +2,24 @@
   "name": "acquisitions",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "imports": {
-    "#src/*": "./src/*",
-    "#config/*": "./src/config/*",
-    "#controllers/*": "./src/controllers/*",
-    "#middleware/*": "./src/middleware/*",
-    "#models/*": "./src/models/*",
-    "#routes/*": "./src/routes/*",
-    "#services/*": "./src/services/*",
-    "#utils/*": "./src/utils/*",
-    "#validations/*": "./src/validations/*"
+    "#src/*": "./dist/*.js",
+    "#config/*": "./dist/config/*.js",
+    "#controllers/*": "./dist/controllers/*.js",
+    "#middleware/*": "./dist/middleware/*.js",
+    "#models/*": "./dist/models/*.js",
+    "#routes/*": "./dist/routes/*.js",
+    "#services/*": "./dist/services/*.js",
+    "#utils/*": "./dist/utils/*.js",
+    "#validations/*": "./dist/validations/*.js"
   },
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc",
+    "build": "npm run db:generate && npm run compile",
+    "compile": "tsc",
+    "postinstall": "npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -27,10 +29,15 @@
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
-    "db:migrate": "prisma migrate dev",
+    "db:migrate": "prisma migrate deploy",
     "db:studio": "prisma studio",
     "db:reset": "prisma migrate reset",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "railway:build": "npm run build",
+    "railway:start": "npm start"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",
@@ -59,7 +66,8 @@
     "morgan": "^1.10.1",
     "prisma": "^6.16.2",
     "winston": "^3.17.0",
-    "zod": "^4.1.9"
+    "zod": "^4.1.9",
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
@@ -76,7 +84,6 @@
     "prettier": "^3.6.2",
     "supertest": "^7.1.4",
     "ts-node": "^10.9.2",
-    "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "tsx": "^4.20.5"
   }
 }

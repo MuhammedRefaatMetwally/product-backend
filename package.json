@@ -3,22 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "imports": {
-    "#src/*": "./dist/*.js",
-    "#config/*": "./dist/config/*.js",
-    "#controllers/*": "./dist/controllers/*.js",
-    "#middleware/*": "./dist/middleware/*.js",
-    "#models/*": "./dist/models/*.js",
-    "#routes/*": "./dist/routes/*.js",
-    "#services/*": "./dist/services/*.js",
-    "#utils/*": "./dist/utils/*.js",
-    "#validations/*": "./dist/validations/*.js"
-  },
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
-    "build": "npm run db:generate && npm run compile",
-    "compile": "tsc",
+    "build": "npm run db:generate && tsc",
     "postinstall": "npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -32,9 +20,7 @@
     "db:migrate": "prisma migrate deploy",
     "db:studio": "prisma studio",
     "db:reset": "prisma migrate reset",
-    "db:seed": "tsx prisma/seed.ts",
-    "railway:build": "npm run build",
-    "railway:start": "npm start"
+    "db:seed": "tsx prisma/seed.ts"
   },
   "engines": {
     "node": ">=18.0.0"

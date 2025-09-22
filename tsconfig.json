@@ -9,27 +9,13 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
-    "moduleDetection": "force",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "verbatimModuleSyntax": false,
     "declaration": false,
     "sourceMap": false,
-    "removeComments": true,
-    "baseUrl": "./src",
-    "paths": {
-      "#src/*": ["./*"],
-      "#config/*": ["./config/*"],
-      "#controllers/*": ["./controllers/*"],
-      "#middleware/*": ["./middleware/*"],
-      "#models/*": ["./models/*"],
-      "#routes/*": ["./routes/*"],
-      "#services/*": ["./services/*"],
-      "#utils/*": ["./utils/*"],
-      "#validations/*": ["./validations/*"]
-    }
+    "removeComments": true
   },
   "include": [
     "src/**/*"
@@ -39,8 +25,5 @@
     "dist",
     "**/*.test.ts",
     "**/*.spec.ts"
-  ],
-  "ts-node": {
-    "esm": true
-  }
+  ]
 }

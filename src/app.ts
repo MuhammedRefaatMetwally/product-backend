@@ -2,8 +2,8 @@ import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cors from 'cors';
-import logger from './config/logger';
-import productRoutes from './routes/product.route';
+import logger from './config/logger.js';
+import productRoutes from './routes/product.route.js';
 const app = express();
 
 app.use(helmet());

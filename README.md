@@ -111,3 +111,13 @@ Create a `.env` file with your database connection:
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=public"
 PORT=3000
 ```
+
+---
+
+## Disclaimer
+
+This project was built as part of a timed task.
+
+* I did **pass the original time limit** for completing it.
+* I used **Claude AI, ChatGPT, and other AI tools** to assist me during development.
+

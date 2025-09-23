@@ -5,39 +5,27 @@ import cors from 'cors';
 import logger from './config/logger.js';
 import productRoutes from './routes/product.route.js';
 import { setupSwagger } from './config/swagger.js';
-
 const app = express();
-
 app.use(helmet());
 app.use(cors());
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.use(
-  morgan('combined', {
+app.use(morgan('combined', {
     stream: { write: message => logger.info(message.trim()) },
-  })
-);
-
+}));
 setupSwagger(app);
-
 app.use('/api/products', productRoutes);
-
 app.get('/', (req, res) => {
-  res.status(200).send('Hello in Full stack Task');
+    res.status(200).send('Hello in Full stack Task');
 });
-
 app.get('/api', (req, res) => {
-  res.status(200).json({ message: 'Products API is Running' });
+    res.status(200).json({ message: 'Products API is Running' });
 });
-
 app.get('/health', (req, res) => {
-  res.status(200).json({
-    status: 'OK',
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
-  });
+    res.status(200).json({
+        status: 'OK',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+    });
 });
-
 export default app;

@@ -1,12 +1,6 @@
 import express from 'express';
-import {
-  getAllProducts,
-  getProductById,
-  createProduct,
-} from '../controllers/product.controller.js';
-
+import { getAllProducts, getProductById, createProduct, } from '../controllers/product.controller.js';
 const router = express.Router();
-
 /**
  * @swagger
  * /api/products:
@@ -51,7 +45,6 @@ const router = express.Router();
  *               $ref: '#/components/schemas/Error'
  */
 router.get('/', getAllProducts);
-
 /**
  * @swagger
  * /api/products/{id}:
@@ -107,7 +100,6 @@ router.get('/', getAllProducts);
  *               $ref: '#/components/schemas/Error'
  */
 router.get('/:id', getProductById);
-
 /**
  * @swagger
  * /api/products:
@@ -187,5 +179,4 @@ router.get('/:id', getProductById);
  *               $ref: '#/components/schemas/Error'
  */
 router.post('/', createProduct);
-
 export default router;
